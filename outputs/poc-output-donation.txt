@@ -1,0 +1,24 @@
+Compiling 1 files with Solc 0.8.30
+Solc 0.8.30 finished in 1.18s
+Compiler run successful!
+
+Ran 1 test for test/ZircuitDonation.t.sol:ZircuitDonationTest
+[PASS] testDonationChargedPerformanceFee() (gas: 1279707)
+Logs:
+  fork block: 59447119
+  DON PPS start x1e18: 1059509013769673869
+  DON recipient shares start: 11568007417
+  DON vault totalAssets pre-report: 1421360587825
+  DON vault totalSupply pre-report: 1341527603213
+  DON expected fee shares (OZ deposit formula): 1877101711
+  DON donor USDC balance after donation: 0
+  DON donor vault shares (expect 0): 0
+  DON report dAssets (expect +10000e6): 10000000000
+  DON fee shares minted on the donation: 1877101711
+  DON fee value at end PPS (USDC wei): 1999999998
+  DON PPS end x1e18: 1065472364789712344
+  DON recipient shares end: 13445109128
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 1.55s (3.25ms CPU time)
+
+Ran 1 test suite in 1.55s (1.55s CPU time): 1 tests passed, 0 failed, 0 skipped (1 total tests)

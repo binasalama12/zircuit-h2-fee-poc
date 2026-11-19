@@ -1,0 +1,115 @@
+Compiling 1 files with Solc 0.8.30
+Solc 0.8.30 finished in 1.50s
+Compiler run successful with warnings:
+Warning (2018): Function state mutability can be restricted to view
+   --> test/ZircuitValidation.t.sol:123:5:
+    |
+123 |     function testLiveConfig() public {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+
+Ran 3 tests for test/ZircuitH3.t.sol:ZircuitH3Test
+[PASS] testH3_FailedComposeFundedRefundSucceeds() (gas: 475654)
+Logs:
+  composer endpoint: 0x1a44076050125825900e736c501f859c50fE728c
+  composer vault-share balance before deal: 0
+  composer vault-share balance after deal: 50000000000
+  H3(c): composer share balance before: 50000000000
+  H3(c): composer share balance after refund: 40000000000
+  H3(c): funded refund dispatched 10000e6 shares back toward composeFrom (user) on srcEid
+
+[PASS] testH3_FailedComposeUnderfundedRefundRevertsAtomically() (gas: 423761)
+Logs:
+  composer endpoint: 0x1a44076050125825900e736c501f859c50fE728c
+  composer vault-share balance before deal: 0
+  composer vault-share balance after deal: 50000000000
+  H3(a): failed compose + underfunded refund -> lzCompose reverted atomically, shares intact at composer
+
+[PASS] testH3_InsufficientMsgValueRevertsForRetry() (gas: 80472)
+Logs:
+  composer endpoint: 0x1a44076050125825900e736c501f859c50fE728c
+  composer vault-share balance before deal: 0
+  composer vault-share balance after deal: 50000000000
+  H3(b): InsufficientMsgValue -> full revert, composer balance unchanged (retryable)
+
+Suite result: ok. 3 passed; 0 failed; 0 skipped; finished in 16.24s (27.16s CPU time)
+
+Ran 4 tests for test/ZircuitValidation.t.sol:ZircuitValidationTest
+[PASS] testH1_BasisInvariant() (gas: 2731043)
+Logs:
+  fork block: 59447119
+  S1 report dAssets (expect +5000e6): 5000000000
+  S2 freeAll received (expect 113000e6): 113000000000
+  S2 basis after free (expect -8000e6): -8000000000
+  S2 report dAssets (expect +8000e6 realized yield): 8000000000
+  S3 report dAssets (expect -2000e6 haircut): -2000000000
+  S4 report dAssets (expect -9800e6): -9800000000
+  S5 free half received (expect 44100e6): 44100000000
+  S5 report dAssets (expect 0): 0
+  S5b report dAssets (expect +5900e6): 5900000000
+
+[PASS] testH1_WeiLevelExactness() (gas: 702570)
+Logs:
+  fork block: 59447119
+  wei-level report dAssets (expect +7): 7
+
+[PASS] testH2_OscillationFeeDrag() (gas: 2588421)
+Logs:
+  fork block: 59447119
+  H2 PPS start x1e18: 1059509013769673869
+  H2 recipient shares start: 11568007417
+  cycle up-leg dAssets (expect +10000e6): 10000000000
+  cycle fee shares minted: 1877101711
+  cycle down-leg dAssets (expect -10000e6): -10000000000
+  cycle up-leg dAssets (expect +10000e6): 10000000000
+  cycle fee shares minted: 1879728203
+  cycle down-leg dAssets (expect -10000e6): -10000000000
+  cycle up-leg dAssets (expect +10000e6): 10000000000
+  cycle fee shares minted: 1882358370
+  cycle down-leg dAssets (expect -10000e6): -10000000000
+  H2 net strategy performance over 3 cycles: 0 (ends at 100k deployed value)
+  H2 fee shares minted by the 3 cycles (delta): 5639188284
+  H2 value of those fee shares at end PPS (USDC wei): 5949760656
+  H2 recipient total shares end (incl. pre-existing live balance): 17207195701
+  H2 PPS end x1e18: 1055073949860027574
+  H2 PPS drag (start-end) x1e18: 4435063909646295
+
+[PASS] testLiveConfig() (gas: 445209)
+Logs:
+  fork block: 59447119
+  SM sharedDecimals (low byte of packed slot): 6
+  SM decimalConversionRate: 1
+  AR performanceFeeBps (live): 2000
+  AR fee recipient: 0x6941bDF233c09f557165EF720049c1A67839F56e
+  Vault totalAssets: 1421360587825
+  Vault crossChainTotalSupply: 1341527603213
+  PPS x1e18: 1059509013769673869
+  live strategies: 8
+  strategy: 0xc91E44E9302288FE5Df24d6392875E5069E1aca7
+    basis: 0
+    value: 0
+  strategy: 0xe83EF4375d806c02387069f1b753b2ab76ab1dc5
+    basis: 661398753494
+    value: 661429871314
+  strategy: 0x7C19aADD063487676b9Dc58968Ed0761d99cE80B
+    basis: 50685536414
+    value: 50686733277
+  strategy: 0x049e8aab2D3CA187e47D74Cf8171Ad266f18643E
+    basis: 16061528521
+    value: 16061839352
+  strategy: 0x085152340DaBBEb6108578847142d5Be63EEFD63
+    basis: 651990434160
+    value: 651990434160
+  strategy: 0x5615dEB798BB3E4dFa0139dFa1b3D433Cc23b72f
+    basis: 0
+    value: 0
+  strategy: 0x2e234DAe75C793f67A35089C9d99245E1C58470b
+    basis: 0
+    value: 0
+  strategy: 0xF62849F9A0B5Bf2913b396098F7c7019b51A820a
+    basis: 0
+    value: 0
+
+Suite result: ok. 4 passed; 0 failed; 0 skipped; finished in 17.41s (15.41s CPU time)
+
+Ran 2 test suites in 17.41s (33.64s CPU time): 7 tests passed, 0 failed, 0 skipped (7 total tests)

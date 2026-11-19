@@ -1,0 +1,62 @@
+No files changed, compilation skipped
+
+Ran 1 test for test/ZircuitFeeSigner.t.sol:FeeSignerRealSignerTest
+[PASS] testFS_RealSignerRejectsForeignSignature() (gas: 110564)
+Logs:
+  live feeSigner (fork): 0x88909Ed19313D67b48C808cC2855237249a320C3
+  FS-real: foreign signature rejected against live feeSigner 0x88909Ed19313D67b48C808cC2855237249a320C3
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 5.26s (785.98ms CPU time)
+
+Ran 12 tests for test/ZircuitFeeSigner.t.sol:FeeSignerTest
+[PASS] testFS_CrossChainReverts() (gas: 112914)
+Logs:
+  FS11: quote bound to chainid; foreign-chain quote reverts
+
+[PASS] testFS_CrossContractReverts() (gas: 112985)
+Logs:
+  FS10: quote bound to contract address; cross-contract replay reverts
+
+[PASS] testFS_CrossUserReverts() (gas: 358834)
+Logs:
+  FS3: quote is bound to msg.sender; cross-user use reverts
+
+[PASS] testFS_DeadlineEnforcedAndBound() (gas: 177894)
+Logs:
+  FS6: expired quote reverts; caller-side deadline extension reverts (deadline is signed)
+
+[PASS] testFS_GarbageSignatureReverts() (gas: 195440)
+Logs:
+  FS8: garbage (ecrecover=0) and 64-byte signatures revert
+
+[PASS] testFS_MalleabilityReverts() (gas: 109656)
+Logs:
+  FS7: malleated (high-s) signature reverts; s-bound enforced in custom ECDSA
+
+[PASS] testFS_RefundAddressNotBound_Info() (gas: 1228297)
+Logs:
+  FS12(info): refundAddress is caller-chosen post-signature (own funds only); overpay accepted, txFee=full msg.value
+
+[PASS] testFS_ReplayReverts() (gas: 607079)
+Logs:
+  FS2: replay of the same quote reverts SignatureAlreadyUsed
+
+[PASS] testFS_TamperedParamsRevert() (gas: 207710)
+Logs:
+  FS4: tampered amountLD and tampered approvedValue both revert (full binding)
+
+[PASS] testFS_UnderpaidReverts() (gas: 83063)
+Logs:
+  FS5: msg.value below approvedValue reverts MsgValueLowerThanApproved
+
+[PASS] testFS_ValidQuoteAccepted() (gas: 683118)
+Logs:
+  FS1: valid quote accepted; entry signedQuote=true, fee=0, txFee=msg.value, usedHash set
+
+[PASS] testFS_ZeroSignerNoBypass() (gas: 202647)
+Logs:
+  FS9: feeSigner=0 gives no bypass; signed path reverts for every signature (bricked, not open)
+
+Suite result: ok. 12 passed; 0 failed; 0 skipped; finished in 10.02s (12.95s CPU time)
+
+Ran 2 test suites in 10.03s (15.28s CPU time): 13 tests passed, 0 failed, 0 skipped (13 total tests)

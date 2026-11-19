@@ -1,0 +1,66 @@
+No files changed, compilation skipped
+
+Ran 2 tests for test/ZircuitDeepDive.t.sol:ZircuitDeepDiveEthTest
+[PASS] testD3_AdapterLocks() (gas: 860195)
+Logs:
+  D3 adapter quoted fee: 830576870837323
+  D3 adapter locks + fee discipline + signed-path rejection all hold
+
+[PASS] testD5_VaultTokenUnsignedQueue() (gas: 2073608)
+Logs:
+  D5 quoted native fee: 830576870837323
+  D5 queue length after enqueue: 24
+  D5 stored entry amountLD (expect exactly 100e18): 100000000000000000000
+  D5 cancel refunded truncated amount + fee exactly; H-1/L-11/L-12 fixes verified live
+
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 13.78s (12.70s CPU time)
+
+Ran 8 tests for test/ZircuitDeepDive.t.sol:ZircuitDeepDiveBaseTest
+[PASS] testD1_AccessGates() (gas: 301480)
+Logs:
+  D1 all access gates reverted for random caller
+
+[PASS] testD1_DonationPPS_And_ExtractionBound() (gas: 952564)
+Logs:
+  D1 attacker shares for 100k: 94381514149
+  D1 PPS before donation x1e18: 1059529515935127116
+  D1 PPS after 100k donation x1e18: 1129171491762926342
+  D1 victim shares for 100k at inflated PPS: 88560507176
+  D1 attacker zUSDC out: 106572915126
+  D1 attacker total in: 200000e6 (100k deposit + 100k donation)
+  D1 attacker net (out - in): -93427084874
+
+[PASS] testD1_RoundingRoundTrip() (gas: 490123)
+Logs:
+  D1 roundtrip in: 1000003
+  D1 roundtrip shares: 943817 out: 1000001
+
+[PASS] testD2_BurnOverdrawReverts() (gas: 105411)
+Logs:
+  D2 burn overdraw reverted atomically; vault zUSDC balance: 1421394968108
+
+[PASS] testD2_DoubleReportNoOp() (gas: 800259)
+Logs:
+  D2 first report dAssets (expect +10000e6): 10000000000
+  D2 second report dAssets (expect 0): 0
+
+[PASS] testD2_RemoveStrategyResidualBasis() (gas: 500804)
+Logs:
+  D2 freed (expect 50000e6): 50000000000
+  D2 residual basis after free-all (expect +50000e6): 50000000000
+  D2 strategy removed with residual basis +50k, no basis check fired
+  D2 hub never burns the 50k loss: PPS permanently overstated unless strategy re-added + reported
+
+[PASS] testD4_ComposerQueue() (gas: 1556523)
+Logs:
+  D4 enqueued ids: 85 86
+  D4 duplicate-id batch reverted as expected
+  D4 user USDC from processed local withdrawal: 105952951
+
+[PASS] testD4_MinAmountBrick() (gas: 826871)
+Logs:
+  D4 minAmountLD brick confirmed; cancel escape works
+
+Suite result: ok. 8 passed; 0 failed; 0 skipped; finished in 13.78s (18.91s CPU time)
+
+Ran 2 test suites in 13.79s (27.55s CPU time): 10 tests passed, 0 failed, 0 skipped (10 total tests)
